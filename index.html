@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/img/logos.png">
+  
+  <link rel="stylesheet" href="style.css">
+  <title>millioner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"  defer></script>
+  <script type="module" src="app.js" defer></script>
+  <script src="cards.js" defer></script>
+</head>
+
+<body>
+<div class="start__modul">
+
+  <div class="game__start">
+    <button class="btn btn-outline-primary start">Старт</button>
+    <button class="btn btn-outline-primary story">Инструкция</button>
+    <button class="btn btn-outline-primary option">Настройки</button>
+  </div>
+
+  <div class="game__start-menu">
+    <div class="game__close">
+      <button type="button" class="game__close-img">
+        +
+      </button>
+    </div>
+
+    <div class="game__start-rules">
+      <h4>Правила игры</h4>
+      <ol>
+        <li>После нажатии кнопки "Старт", игра начинается автоматически.</li>
+        <li>На каждый вопрос у вас будет только 60 секунд</li>
+        <li>После того как выбрали ответ, кликните на кнопку "Принять ответ".</li>
+        <li>Когда решите что готовы продолжать, кликните "Следующий вопрос".</li>
+      </ol>
+      <h4>Подсказки</h4>
+      <ol>
+        <li>50/50 - убрать два неверных ответа</li>
+        <li>Звонок другу - получаете верный ответ</li>
+        <li>25/75 - убрать неверный ответ</li>
+      </ol>
+    </div>
+  </div>
+
+</div>      <!-- /start__modul -->
+
+<div class="page">
+  <div class="game__top">
+    <div class="game__body">
+      <!-- <div class="game__options"></div> -->
+
+      <div class="game__helpers">
+        <button class="btn  btn-outline-primary" type="button">
+          <span>50 / 50</span></button>
+        <button class="btn  btn-outline-primary" type="button">
+          <span>звонок маме</span></button>
+        <button class="btn  btn-outline-primary" type="button">
+          <span>право на ошибку</span></button>
+          <button class="btn  btn-outline-primary" type="button">
+            <span>убрать один</span></button>
+      </div>
+
+      <div class="clock">
+        <div class="numbers">
+          <div class="circle" id="sec">
+            <div class="zero">0</div>
+            <i></i>
+          </div>
+          <span style="--i:0;"><b>60</b></span>
+          <span style="--i:1"><b>5</b></span>
+          <span style="--i:2"><b>10</b></span>
+          <span style="--i:3"><b>15</b></span>
+          <span style="--i:4"><b>20</b></span>
+          <span style="--i:5"><b>25</b></span>
+          <span style="--i:6"><b>30</b></span>
+          <span style="--i:7"><b>35</b></span>
+          <span style="--i:8"><b>40</b></span>
+          <span style="--i:9"><b>45</b></span>
+          <span style="--i:10"><b>50</b></span>
+          <span style="--i:11"><b>55</b></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="game__process">
+
+      <div class="game__process-body">
+        <table>
+          <tr><td>15</td><td>&#9674;</td><td>1 000 000</td></tr>
+          <tr><td>14</td><td>&#9674;</td><td>500 000</td></tr>
+          <tr><td>13</td><td>&#9674;</td><td>250 000</td></tr>
+          <tr><td>12</td><td>&#9674;</td><td>125 000</td></tr>
+          <tr><td>11</td><td>&#9674;</td><td>64 000</td></tr>
+          <tr><td>10</td><td>&#9674;</td><td>32 000</td></tr>
+          <tr><td>9</td><td>&#9674;</td><td>16 000</td></tr>
+          <tr><td>8</td><td>&#9674;</td><td>8 000</td></tr>
+          <tr><td>7</td><td>&#9674;</td><td>4 000</td></tr>
+          <tr><td>6</td><td>&#9674;</td><td>2 000</td></tr>
+          <tr><td>5</td><td>&#9674;</td><td>1 000</td></tr>
+          <tr><td>4</td><td>&#9674;</td><td>500</td></tr>
+          <tr><td>3</td><td>&#9674;</td><td>300</td></tr>
+          <tr><td>2</td><td>&#9674;</td><td>200</td></tr>
+          <tr class="1  table__active"><td>1</td><td>&#9674;</td><td>100</td></tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="game__bottom">
+    <p class="table__nextStep">Итак, первый вопрос 100 рублей</p>
+    <p class="table__looseTime">Время закончилось. Вы проиграли!!!</p>
+    <p class="table__loose">Увы, неверный ответ. Вы проиграли!!!</p>
+    <div class="check__question">
+      <button class="btn  btn-success  check">Принять ответ</button>
+      <button class="btn  btn-warning  nextQuest">Следующий вопрос</button>
+    </div>
+
+
+    <div class="millioner__bottom-question">
+      <div class="bottom__question"></div>
+    </div>
+
+    <div class="millioner__bottom-answers">
+      <div class="millioner__bottom-column">
+        <button class="column__block  a1"></button>
+        <button class="column__block  a2"></button>
+      </div>
+      <div class="millioner__bottom-column">
+        <button class="column__block  a3"></button>
+        <button class="column__block  a4"></button>
+      </div>
+    </div>
+  </div>
+</div>      <!-- /page -->
+
+
+</body>
+</html>

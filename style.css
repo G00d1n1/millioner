@@ -1,0 +1,72 @@
+* {box-sizing: border-box; padding: 0; margin: 0;}
+:root{
+  --white : #ececec; 
+  --gold : #d47405;
+  --bg : #0a0741;
+  --bootstrap : #0d6efd;
+  --red : #dc3545;
+}
+body {background-color: var(--bg) !important;}
+button {border: none; }
+
+.page {width: 100%; max-width: 1600px; height: 100vh; max-height: 1000px; padding: 20px; display: block; margin: 0 auto;}
+.game__top {width: 100%; height: 70%; display: flex; justify-content: center;}
+.game__body {width: 70%; max-width: 600px; background-image: url(img/logos.png); background-repeat: no-repeat; background-position: center; color: var(--white); background-size: 50%; display: flex; flex-direction: column; justify-content: space-between;}
+.game__start .start{color: var(--white); border-radius: 45%;}
+.game__process {width: 30%; padding-top: 20px;}
+.game__helpers {display: flex; justify-content: space-between; }
+.game__helpers span{font-weight: 800;}
+.game__helpers button {width: max-content !important}
+.btn-outline-primary {border-radius: 45% !important;}
+
+.clock {display: flex; justify-content: center; align-items: center; position: relative; width: 150px; height: 150px;}
+.clock .btn {height: 40px;}
+.numbers {position: absolute; width: 150px; height: 150px; display: flex; justify-content: center; align-items: center; border-radius: 50%;}
+/* .numbers::before {content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%; background-color: red;} */
+.numbers span{position: absolute; inset: 15px; text-align: center; transform: rotate(calc(30deg * var(--i))); font-size: .8em;}
+.numbers span b{font-weight: 400; display: inline-block; transform: rotate(calc(-30deg * var(--i)));}
+.numbers .circle i{position: absolute; z-index: 10; width: 6px; height: 30px; background-color: transparent; opacity: .9; left: 50%; top: -30px; transform: translateX(-50%);
+  /* transform-origin: bottom; transform: scaleY(1); */
+}
+.numbers .circle#sec i {width: 4px; }
+.zero {color: transparent;}
+
+/* .blabla:last-child{scroll-padding-block-start: a;} */
+.game__process-body {display: flex; justify-content: space-between; padding: 20px;  color: var(--gold);
+ font-weight: 800;width: 100%;}
+table {width: 100%;}
+table tr {display: flex; justify-content: space-between;}
+.table__active {border: 1px solid var(--gold); padding-right: 5px; color: var(--white);}
+table tr td:nth-child(1) {text-align: right; width: 10%;}
+table tr td:nth-child(2) {text-align: right; width: 20%;}
+table tr td:nth-child(3) {text-align: right; width: 70%;}
+
+.game__bottom {height: 30%; display: flex; flex-direction: column; justify-content: end;}
+
+.table__nextStep, .table__winner {text-align: center; color: var(--white); font-size: 30px;}
+.table__looseTime {text-align: center; color: var(--white); font-size: 30px; display: none;}
+.table__loose {text-align: center; color: var(--white); font-size: 30px; display: none;}
+.check__question {display: flex; justify-content: center;padding-bottom: 10px; gap: 10px;}
+.bottom__question {background-image: url(img/question.png); background-repeat: no-repeat; background-position: center; height: 40px; text-align: center; line-height: 2; color: var(--white);}
+.millioner__bottom-answers{display: flex; justify-content: center; padding: 20px 0; gap: 40px;}
+.column__block {background-image: url(img/answer.png); background-repeat: no-repeat; background-position: center; background-color: var(--bg); width: 350px; height: 40px; color: var(--gold); display: block; line-height: 2; text-align: left; padding-left: 30px;}
+.column__block:nth-child(odd){margin-bottom: 20px;}
+.game__bottom .check {display: flex  !important; color: red in !important;}
+
+
+.btnHover {background-image: url(img/goldStroke.png); background-repeat: no-repeat; background-position: center;width: 350px; height: 40px;}
+.active {background-image: url(img/check.png); background-repeat: no-repeat; background-position: center;width: 350px; height: 40px; color: #fff;}
+
+
+
+.start__modul{width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center;}
+.game__start-menu {position: absolute; width: 90%; max-width: 500px; height: 350px; background-color: var(--bg); border: 1px solid var(--bootstrap); border-radius: 15px; display: none;}
+.game__start-rules {color: var(--white); padding: 20px 0;}
+.game__start-rules h4 {text-align: center;}
+.game__start-rules li {font-size: 12px;}
+.game__close {position: relative; width: 100%; height: 50px;}
+.game__close-img {
+  position: absolute; right: 10px;  
+  border-radius: 50%; transform: rotate(45deg);
+  font-size: 40px; background-color: transparent; color: red;
+}
