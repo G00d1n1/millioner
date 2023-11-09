@@ -42,23 +42,19 @@ let arr = [
 let step = 0
 let count = 15
 let buttons = document.querySelectorAll('.column__block') 
-let number
 let zero = document.querySelector('.zero')
+let number, gameTimer, zeroInput
 let gameBottom = document.querySelector('.game__bottom')
-
 let start = document.querySelector('.start')
-start.addEventListener('click', startGame)
-let gameTimer, zeroInput
 let page = document.querySelector('.page')
 let startMenu = document.querySelector('.start__modul')
 let nextQuest = document.querySelector('.nextQuest')
-nextQuest.addEventListener('click', nextQuestion)
 let tableNextStep = document.querySelector('.table__nextStep')
 let tableLooseTime = document.querySelector('.table__looseTime')
 let tableLoose = document.querySelector('.table__loose')
 let checkQuestion = document.querySelector('.check__question')
 
-
+start.addEventListener('click', startGame)
 function startGame(){
   step = 1
   timeFnc()
@@ -67,12 +63,6 @@ function startGame(){
   startMenu.style.display = 'none'
 }
 
-function nextQuestion(){
-  clearInterval(gameTimer)
-  getElementsByArr()
-  timeFnc()
-  zeroInput = 0
-}
 /*
 Принять ответ...
   -- если верный ответ
@@ -111,7 +101,67 @@ function getElementsByArr(){
   answer4.innerHTML = ans4
 }
 
-      // сравнение ответов по клику                       // ведение счета в таблице
+        // следующий вопрос
+nextQuest.addEventListener('click', nextQuestion)
+function nextQuestion(){
+  clearInterval(gameTimer)
+  getElementsByArr()
+  timeFnc()
+  zeroInput = 0
+}
+
+
+      // Подсказки
+let help1, help2
+help5050.addEventListener('click',function(){
+  help5050.setAttribute('disabled','')      // делает кнопку неактивной после нажатия
+  let helpArr5050 = []
+
+  buttons.forEach(element => {
+    help1 = arr.find(function(item){
+      return item.stady === step;
+    })
+    help2 = help1.answer
+    
+    if(element.innerText !== help2){
+      helpArr5050.push(element)
+      if(helpArr5050.length >= 2){
+        element.innerHTML = ''
+      }
+    }
+  });
+})
+delOne.addEventListener('click',function(e){
+  delOne.setAttribute('disabled','')
+  let helpArrDelOne = []
+
+  buttons.forEach(element => {
+    help1 = arr.find(function(item){
+      return item.stady === step;
+    })
+    help2 = help1.answer
+    
+    if(element.innerText !== help2){
+      helpArrDelOne.push(element)
+      if(helpArrDelOne.length >= 3){
+        element.innerHTML = ''
+      }
+    }
+  })
+})
+president.addEventListener('click',function(){
+  president.setAttribute('disabled','')
+})
+// который позволяет выбрать до 2х ответов
+// кликаю подсказку,(появляется клик), потом кликаю на элемент на игровом поле,
+// запускается проверка, если ответ совпадает, то зеленое меню
+secondLife.addEventListener('click',function(){
+  secondLife.setAttribute('disabled','')
+})
+
+
+
+      // сравнение ответов по клику - процесс                      // ведение счета в таблице
 let check = document.querySelector('.btn.check')
 check.addEventListener('click', process)
 function process(){
@@ -135,7 +185,6 @@ function process(){
 
         step++
         count--
-             
               // условие победы
         if(step == 15){
           let luck = document.createElement('p')
@@ -143,7 +192,6 @@ function process(){
           luck.innerText = 'Поздравляю, вы победитель!'
           gameBottom.insertBefore(luck, checkQuestion)
         }
-
               // результат в рейтинговой таблице
         let part
         let list = document.querySelectorAll('table tr');
@@ -152,13 +200,10 @@ function process(){
           part = document.querySelector(`table tr:nth-child(${count})`)
           part.classList.add('table__active')
         });
-
-            // вспомогающий текст о сумме ставки
+              // текст ведущего
         let listTr = part.querySelector(`table tr td:last-child`)
         let listTrTd = listTr.innerText
-        console.log(listTrTd)
         tableNextStep.innerText = `Следующий вопрос на ${listTrTd} рублей`
-
       }
       else {        // иначе, если вопрос не угадан
         tableLoose.style.display = 'block'
@@ -170,7 +215,6 @@ function process(){
             element.style.backgroundImage = 'url(img/right.png)'
             element.style.color = '#ececec'
             checkQuestion.style.display = 'none'
-            
 // тут можно сделать мигание зелёного ответа
           }
         });
@@ -181,7 +225,9 @@ function process(){
   // getElementsByArr()
 }
 
+      
 
+      // таймер
 let timeFnc = function timer(){
   let zz = document.querySelector('.numbers .circle i')
   let sc = document.querySelector('#sec')
@@ -199,12 +245,12 @@ let timeFnc = function timer(){
       checkQuestion.style.display = 'none'
     }
   },1000)
-
   function isLoose(){
     console.log('Увы! Время окончено!')
     clearTimeout(gameTimer)
   }
 }
+
 
         // анимация для ответов
 buttons.forEach(btn => {
@@ -227,16 +273,15 @@ buttons.forEach(btn => {
   })
 });
 
-
-        //    стартовое меню
+        // стартовое меню
 let gameStartMenu = document.querySelector('.game__start-menu')
-let instruction = document.querySelector('.game__close')
 let story = document.querySelector('.story')
+let instruction = document.querySelector('.game__close')
 
-instruction.addEventListener('click', function(){
-  gameStartMenu.style.display = 'none'
-})
 story.addEventListener('click', function(){
   gameStartMenu.style.display = 'block'
+})
+instruction.addEventListener('click', function(){
+  gameStartMenu.style.display = 'none'
 })
 

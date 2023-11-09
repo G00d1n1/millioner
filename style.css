@@ -15,7 +15,9 @@ button {border: none; }
 .game__start .start{color: var(--white); border-radius: 45%;}
 .game__process {width: 30%; padding-top: 20px;}
 .game__helpers {display: flex; justify-content: space-between; }
-.game__helpers span{font-weight: 800;}
+.game__helpers span {font-weight: 800;}
+.game__helpers span a{text-decoration: none; width: 100%; height: 100%;}
+.game__helpers button:hover a{color: var(--white);}
 .game__helpers button {width: max-content !important}
 .btn-outline-primary {border-radius: 45% !important;}
 
@@ -31,7 +33,6 @@ button {border: none; }
 .numbers .circle#sec i {width: 4px; }
 .zero {color: transparent;}
 
-/* .blabla:last-child{scroll-padding-block-start: a;} */
 .game__process-body {display: flex; justify-content: space-between; padding: 20px;  color: var(--gold);
  font-weight: 800;width: 100%;}
 table {width: 100%;}
@@ -54,8 +55,8 @@ table tr td:nth-child(3) {text-align: right; width: 70%;}
 .game__bottom .check {display: flex  !important; color: red in !important;}
 
 
-.btnHover {background-image: url(img/goldStroke.png); background-repeat: no-repeat; background-position: center;width: 350px; height: 40px;}
-.active {background-image: url(img/check.png); background-repeat: no-repeat; background-position: center;width: 350px; height: 40px; color: #fff;}
+.btnHover {background-image: url(img/goldStroke.png); background-repeat: no-repeat; background-position: center; width: 350px; height: 40px;}
+.active {background-image: url(img/check.png); background-repeat: no-repeat; background-position: center; width: 350px; height: 40px; color: #fff;}
 
 
 
@@ -64,7 +65,7 @@ table tr td:nth-child(3) {text-align: right; width: 70%;}
 .game__start-rules {color: var(--white); padding: 20px 0;}
 .game__start-rules h4 {text-align: center;}
 .game__start-rules li {font-size: 12px;}
-.game__close {position: relative; width: 100%; height: 50px;}
+.game__close {position: relative; width: 100%; height: 30px;}
 .game__close-img {
   position: absolute; right: 10px;  
   border-radius: 50%; transform: rotate(45deg);
