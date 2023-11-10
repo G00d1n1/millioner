@@ -57,6 +57,7 @@ table tr td:nth-child(3) {text-align: right; width: 70%;}
 
 .btnHover {background-image: url(img/goldStroke.png); background-repeat: no-repeat; background-position: center; width: 350px; height: 40px;}
 .active {background-image: url(img/check.png); background-repeat: no-repeat; background-position: center; width: 350px; height: 40px; color: #fff;}
+.right {background-image: url(img/right.png); background-repeat: no-repeat; background-position: center; width: 350px; height: 40px; color: #fff;}
 
 
 

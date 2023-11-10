@@ -78,6 +78,22 @@ function startGame(){
   ,, таймер запускается
 */
 
+
+
+        // стартовое меню
+let gameStartMenu = document.querySelector('.game__start-menu')
+let story = document.querySelector('.story')
+let instruction = document.querySelector('.game__close')
+
+story.addEventListener('click', function(){
+  gameStartMenu.style.display = 'block'
+})
+instruction.addEventListener('click', function(){
+  gameStartMenu.style.display = 'none'
+})
+
+        
+
       // заполнение игрового поля
 let answer1, answer2, answer3, answer4, bottomQuest
 function getElementsByArr(){
@@ -101,6 +117,7 @@ function getElementsByArr(){
   answer4.innerHTML = ans4
 }
 
+
         // следующий вопрос
 nextQuest.addEventListener('click', nextQuestion)
 function nextQuestion(){
@@ -110,19 +127,20 @@ function nextQuestion(){
   zeroInput = 0
 }
 
-
       // Подсказки
+president.addEventListener('click',function(){
+  window.open('tel:74956063602');
+  president.setAttribute('disabled','')
+})
 let help1, help2
 help5050.addEventListener('click',function(){
   help5050.setAttribute('disabled','')      // делает кнопку неактивной после нажатия
   let helpArr5050 = []
-
   buttons.forEach(element => {
     help1 = arr.find(function(item){
       return item.stady === step;
     })
     help2 = help1.answer
-    
     if(element.innerText !== help2){
       helpArr5050.push(element)
       if(helpArr5050.length >= 2){
@@ -134,13 +152,11 @@ help5050.addEventListener('click',function(){
 delOne.addEventListener('click',function(e){
   delOne.setAttribute('disabled','')
   let helpArrDelOne = []
-
   buttons.forEach(element => {
     help1 = arr.find(function(item){
       return item.stady === step;
     })
     help2 = help1.answer
-    
     if(element.innerText !== help2){
       helpArrDelOne.push(element)
       if(helpArrDelOne.length >= 3){
@@ -149,15 +165,17 @@ delOne.addEventListener('click',function(e){
     }
   })
 })
-president.addEventListener('click',function(){
-  president.setAttribute('disabled','')
+secondLife.addEventListener('click',function(){
+  secondLife.setAttribute('disabled','')
+  secondLife.setAttribute('boolean','true')
 })
+// let helpSecondLife = []
+// кликаю по элементу если не содержит DISABLED он пустой
+// отследить клик по ответам
 // который позволяет выбрать до 2х ответов
 // кликаю подсказку,(появляется клик), потом кликаю на элемент на игровом поле,
 // запускается проверка, если ответ совпадает, то зеленое меню
-secondLife.addEventListener('click',function(){
-  secondLife.setAttribute('disabled','')
-})
+
 
 
 
@@ -191,6 +209,7 @@ function process(){
           luck.classList.add('table__winner')
           luck.innerText = 'Поздравляю, вы победитель!'
           gameBottom.insertBefore(luck, checkQuestion)
+          // добавить звуковой эффект и анимацию
         }
               // результат в рейтинговой таблице
         let part
@@ -225,8 +244,6 @@ function process(){
   // getElementsByArr()
 }
 
-      
-
       // таймер
 let timeFnc = function timer(){
   let zz = document.querySelector('.numbers .circle i')
@@ -252,7 +269,7 @@ let timeFnc = function timer(){
 }
 
 
-        // анимация для ответов
+        // анимация для ответов + право на ошибку
 buttons.forEach(btn => {
   btn.addEventListener('mouseenter',function(e){
     let target = e.target
@@ -263,25 +280,39 @@ buttons.forEach(btn => {
     target.classList.remove('btnHover')
   })
 })
+
+      // анимация по клику + подсказка Право на ошибку
+let counterSecondLife = 0
 buttons.forEach(btn => {
   btn.addEventListener('click', function(e){
     e.preventDefault()
-    buttons.forEach(btn => {
-      btn.classList.remove('active')
+    counterSecondLife++
+
+    buttons.forEach(elem=>{elem.classList.remove('active')})
+
+    help1 = arr.find(function(item){
+      return item.stady === step;
     })
-    btn.classList.add('active')
+    help2 = help1.answer
+
+    let align = secondLife.getAttribute('boolean')
+    if (align === 'true'){      // если нажата кнопка
+
+      if(btn.innerText !== help2){
+        
+        if(counterSecondLife < 2){
+          e.target.innerHTML = ''
+        }
+        else{
+          btn.classList.add('active')
+        }
+      }
+      // else {
+      //   btn.style.backgroundImage = 'url(img/right.png)'    // при клике показывает верный вариант
+      // }
+    }
+      btn.classList.add('active')
   })
 });
 
-        // стартовое меню
-let gameStartMenu = document.querySelector('.game__start-menu')
-let story = document.querySelector('.story')
-let instruction = document.querySelector('.game__close')
-
-story.addEventListener('click', function(){
-  gameStartMenu.style.display = 'block'
-})
-instruction.addEventListener('click', function(){
-  gameStartMenu.style.display = 'none'
-})
 
