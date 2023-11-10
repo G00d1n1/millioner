@@ -263,7 +263,6 @@ let timeFnc = function timer(){
     }
   },1000)
   function isLoose(){
-    console.log('Увы! Время окончено!')
     clearTimeout(gameTimer)
   }
 }
@@ -286,7 +285,6 @@ let counterSecondLife = 0
 buttons.forEach(btn => {
   btn.addEventListener('click', function(e){
     e.preventDefault()
-    counterSecondLife++
 
     buttons.forEach(elem=>{elem.classList.remove('active')})
 
@@ -297,6 +295,7 @@ buttons.forEach(btn => {
 
     let align = secondLife.getAttribute('boolean')
     if (align === 'true'){      // если нажата кнопка
+      counterSecondLife++
 
       if(btn.innerText !== help2){
         
